@@ -39,6 +39,7 @@ dependencies:
   flutter_native_splash: ^2.4.0
   # Responsive app all devices
   flutter_screenutil: ^5.9.0
+  flutter_svg: ^2.0.10+1
 
 
 dev_dependencies:
