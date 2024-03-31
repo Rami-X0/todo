@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
+import 'package:todo/core/theming/styles.dart';
 
 class TodoText extends StatelessWidget {
   const TodoText({super.key});
@@ -10,13 +11,10 @@ class TodoText extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-       Gap(230.h),
+        Gap(230.h),
         Text(
           'ToDo',
-          style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.w700,
-              fontSize: 38.sp),
+          style: TextStyles.font38WhiteBold,
         ),
       ],
     );
