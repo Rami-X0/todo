@@ -7,11 +7,9 @@ class TodoLogo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: SvgPicture.asset(
-        'assets/svgs/todo_logo_splash.svg',
-        height: 135.h,
-      ),
+    return SvgPicture.asset(
+      'assets/svgs/todo_logo_splash.svg',
+      height: 135.h,
     );
   }
 }

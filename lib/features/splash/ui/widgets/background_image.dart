@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todo/core/theming/colors.dart';
+import 'package:todo/features/splash/ui/widgets/scale_fade_align_todo_and_text.dart';
 import 'package:todo/features/splash/ui/widgets/todo_logo.dart';
 
 class BackgroundImage extends StatelessWidget {
@@ -20,7 +21,11 @@ class BackgroundImage extends StatelessWidget {
                 fit: BoxFit.cover),
           ),
         ),
-      TodoLogo()
+        const ScaleFadeAlignTodoAndText(
+          begin: Alignment.topCenter,
+          end: Alignment.center,
+          child: TodoLogo(),
+        )
       ],
     );
   }
