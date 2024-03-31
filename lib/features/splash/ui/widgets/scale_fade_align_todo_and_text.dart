@@ -13,7 +13,8 @@ class ScaleFadeAlignTodoAndText extends StatefulWidget {
   });
 
   @override
-  State<ScaleFadeAlignTodoAndText> createState() => _ScaleFadeAlignTodoAndTextState();
+  State<ScaleFadeAlignTodoAndText> createState() =>
+      _ScaleFadeAlignTodoAndTextState();
 }
 
 class _ScaleFadeAlignTodoAndTextState extends State<ScaleFadeAlignTodoAndText>
@@ -34,21 +35,24 @@ class _ScaleFadeAlignTodoAndTextState extends State<ScaleFadeAlignTodoAndText>
 
   void controlScaleAnimated() {
     _controller = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 750))
-      ..forward();
+      vsync: this,
+      duration: const Duration(milliseconds: 1000),
+    )..forward();
     _scaleAnimation = Tween(begin: 0.5, end: 1.0).animate(_controller);
   }
 
   void controlAlignmentAnimated() {
-    _alignmentAnimation = AlignmentTween(begin: widget.begin, end: widget.end)
-        .animate(
-            CurvedAnimation(parent: _controller, curve: Curves.bounceOut));
+    _alignmentAnimation =
+        AlignmentTween(begin: widget.begin, end: widget.end).animate(
+      CurvedAnimation(parent: _controller, curve: Curves.bounceOut),
+    );
   }
 
   void controlFadeAnimated() {
     _fadeController = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 850))
-      ..forward();
+      vsync: this,
+      duration: const Duration(milliseconds: 950),
+    )..forward();
 
     _fadeAnimation = Tween(begin: 0.0, end: 1.0).animate(_fadeController);
   }

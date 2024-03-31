@@ -39,7 +39,10 @@ dependencies:
   flutter_native_splash: ^2.4.0
   # Responsive app all devices
   flutter_screenutil: ^5.9.0
+  # Add image svg in flutter
   flutter_svg: ^2.0.10+1
+  # Adding gaps inside Flex widgets such as Columns and Rows
+  gap: ^3.0.1
 
 
 dev_dependencies:
