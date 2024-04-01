@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:todo/core/helper/hive_constants.dart';
 import 'package:todo/features/home/data/model/todo_model.dart';
-import 'package:todo/features/home/logic/write_todo_state.dart';
+import 'package:todo/features/home/logic/write_cubit/write_todo_state.dart';
 
 class WriteCubit extends Cubit<WriteTodoState> {
   final Box _box = Hive.box(HiveConstants.todoBox);
