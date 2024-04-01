@@ -43,9 +43,16 @@ dependencies:
   flutter_svg: ^2.0.10+1
   # Adding gaps inside Flex widgets such as Columns and Rows
   gap: ^3.0.1
+  # Local data base
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  # State management
+  flutter_bloc: ^8.1.5
 
 
 dev_dependencies:
+  hive_generator: ^2.0.1
+  build_runner: ^2.4.9
   flutter_test:
     sdk: flutter
 
