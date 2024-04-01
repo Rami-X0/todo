@@ -10,11 +10,14 @@ class TodoModel extends HiveObject {
   final int colorCode;
   @HiveField(2)
   final List<String> textTodo;
+  @HiveField(3)
+  final String text;
 
   TodoModel({
     required this.itemIndex,
     required this.colorCode,
-    required this.textTodo,
+    required this.text,
+    this.textTodo = const [],
   });
 
   TodoModel addTodo(String todo) {
@@ -33,6 +36,7 @@ class TodoModel extends HiveObject {
     return TodoModel(
       itemIndex: itemIndex - 1,
       colorCode: colorCode,
+      text: text,
       textTodo: textTodo,
     );
   }
@@ -41,6 +45,7 @@ class TodoModel extends HiveObject {
     return TodoModel(
       itemIndex: itemIndex,
       colorCode: colorCode,
+      text: text,
       textTodo: todo,
     );
   }
