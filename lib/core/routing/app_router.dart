@@ -6,9 +6,12 @@ import 'package:todo/features/splash/ui/splash_screen.dart';
 Route generateRoute(RouteSettings settings) {
   switch (settings.name) {
     case Routes.splashScreen:
-     return MaterialPageRoute(builder: (_) => const SplashScreen());
+      return MaterialPageRoute(builder: (_) => const SplashScreen());
     case Routes.homeScreen:
-      return MaterialPageRoute(builder: (_) => const HomeScreen());
+      return MaterialPageRoute(
+        builder: (_) =>
+            const HomeScreen(),
+      );
     default:
       return MaterialPageRoute(
         builder: (_) => Scaffold(

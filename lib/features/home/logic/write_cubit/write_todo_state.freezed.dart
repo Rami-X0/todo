@@ -23,7 +23,7 @@ mixin _$WriteTodoState {
     required TResult Function() successWriteTodo,
     required TResult Function(String messageError) failureWriteTodo,
     required TResult Function() updateTextWriteTodo,
-    required TResult Function() updateColorCodeWriteTodo,
+    required TResult Function(int colorCode) updateColorCodeWriteTodo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -33,7 +33,7 @@ mixin _$WriteTodoState {
     TResult? Function()? successWriteTodo,
     TResult? Function(String messageError)? failureWriteTodo,
     TResult? Function()? updateTextWriteTodo,
-    TResult? Function()? updateColorCodeWriteTodo,
+    TResult? Function(int colorCode)? updateColorCodeWriteTodo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -43,7 +43,7 @@ mixin _$WriteTodoState {
     TResult Function()? successWriteTodo,
     TResult Function(String messageError)? failureWriteTodo,
     TResult Function()? updateTextWriteTodo,
-    TResult Function()? updateColorCodeWriteTodo,
+    TResult Function(int colorCode)? updateColorCodeWriteTodo,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -142,7 +142,7 @@ class _$InitialImpl implements Initial {
     required TResult Function() successWriteTodo,
     required TResult Function(String messageError) failureWriteTodo,
     required TResult Function() updateTextWriteTodo,
-    required TResult Function() updateColorCodeWriteTodo,
+    required TResult Function(int colorCode) updateColorCodeWriteTodo,
   }) {
     return initial();
   }
@@ -155,7 +155,7 @@ class _$InitialImpl implements Initial {
     TResult? Function()? successWriteTodo,
     TResult? Function(String messageError)? failureWriteTodo,
     TResult? Function()? updateTextWriteTodo,
-    TResult? Function()? updateColorCodeWriteTodo,
+    TResult? Function(int colorCode)? updateColorCodeWriteTodo,
   }) {
     return initial?.call();
   }
@@ -168,7 +168,7 @@ class _$InitialImpl implements Initial {
     TResult Function()? successWriteTodo,
     TResult Function(String messageError)? failureWriteTodo,
     TResult Function()? updateTextWriteTodo,
-    TResult Function()? updateColorCodeWriteTodo,
+    TResult Function(int colorCode)? updateColorCodeWriteTodo,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -269,7 +269,7 @@ class _$LoadingWriteTodoImpl implements LoadingWriteTodo {
     required TResult Function() successWriteTodo,
     required TResult Function(String messageError) failureWriteTodo,
     required TResult Function() updateTextWriteTodo,
-    required TResult Function() updateColorCodeWriteTodo,
+    required TResult Function(int colorCode) updateColorCodeWriteTodo,
   }) {
     return loadingWriteTodo();
   }
@@ -282,7 +282,7 @@ class _$LoadingWriteTodoImpl implements LoadingWriteTodo {
     TResult? Function()? successWriteTodo,
     TResult? Function(String messageError)? failureWriteTodo,
     TResult? Function()? updateTextWriteTodo,
-    TResult? Function()? updateColorCodeWriteTodo,
+    TResult? Function(int colorCode)? updateColorCodeWriteTodo,
   }) {
     return loadingWriteTodo?.call();
   }
@@ -295,7 +295,7 @@ class _$LoadingWriteTodoImpl implements LoadingWriteTodo {
     TResult Function()? successWriteTodo,
     TResult Function(String messageError)? failureWriteTodo,
     TResult Function()? updateTextWriteTodo,
-    TResult Function()? updateColorCodeWriteTodo,
+    TResult Function(int colorCode)? updateColorCodeWriteTodo,
     required TResult orElse(),
   }) {
     if (loadingWriteTodo != null) {
@@ -396,7 +396,7 @@ class _$SuccessWriteTodoImpl implements SuccessWriteTodo {
     required TResult Function() successWriteTodo,
     required TResult Function(String messageError) failureWriteTodo,
     required TResult Function() updateTextWriteTodo,
-    required TResult Function() updateColorCodeWriteTodo,
+    required TResult Function(int colorCode) updateColorCodeWriteTodo,
   }) {
     return successWriteTodo();
   }
@@ -409,7 +409,7 @@ class _$SuccessWriteTodoImpl implements SuccessWriteTodo {
     TResult? Function()? successWriteTodo,
     TResult? Function(String messageError)? failureWriteTodo,
     TResult? Function()? updateTextWriteTodo,
-    TResult? Function()? updateColorCodeWriteTodo,
+    TResult? Function(int colorCode)? updateColorCodeWriteTodo,
   }) {
     return successWriteTodo?.call();
   }
@@ -422,7 +422,7 @@ class _$SuccessWriteTodoImpl implements SuccessWriteTodo {
     TResult Function()? successWriteTodo,
     TResult Function(String messageError)? failureWriteTodo,
     TResult Function()? updateTextWriteTodo,
-    TResult Function()? updateColorCodeWriteTodo,
+    TResult Function(int colorCode)? updateColorCodeWriteTodo,
     required TResult orElse(),
   }) {
     if (successWriteTodo != null) {
@@ -551,7 +551,7 @@ class _$FailureWriteTodoImpl implements FailureWriteTodo {
     required TResult Function() successWriteTodo,
     required TResult Function(String messageError) failureWriteTodo,
     required TResult Function() updateTextWriteTodo,
-    required TResult Function() updateColorCodeWriteTodo,
+    required TResult Function(int colorCode) updateColorCodeWriteTodo,
   }) {
     return failureWriteTodo(messageError);
   }
@@ -564,7 +564,7 @@ class _$FailureWriteTodoImpl implements FailureWriteTodo {
     TResult? Function()? successWriteTodo,
     TResult? Function(String messageError)? failureWriteTodo,
     TResult? Function()? updateTextWriteTodo,
-    TResult? Function()? updateColorCodeWriteTodo,
+    TResult? Function(int colorCode)? updateColorCodeWriteTodo,
   }) {
     return failureWriteTodo?.call(messageError);
   }
@@ -577,7 +577,7 @@ class _$FailureWriteTodoImpl implements FailureWriteTodo {
     TResult Function()? successWriteTodo,
     TResult Function(String messageError)? failureWriteTodo,
     TResult Function()? updateTextWriteTodo,
-    TResult Function()? updateColorCodeWriteTodo,
+    TResult Function(int colorCode)? updateColorCodeWriteTodo,
     required TResult orElse(),
   }) {
     if (failureWriteTodo != null) {
@@ -685,7 +685,7 @@ class _$UpdateTextWriteTodoImpl implements UpdateTextWriteTodo {
     required TResult Function() successWriteTodo,
     required TResult Function(String messageError) failureWriteTodo,
     required TResult Function() updateTextWriteTodo,
-    required TResult Function() updateColorCodeWriteTodo,
+    required TResult Function(int colorCode) updateColorCodeWriteTodo,
   }) {
     return updateTextWriteTodo();
   }
@@ -698,7 +698,7 @@ class _$UpdateTextWriteTodoImpl implements UpdateTextWriteTodo {
     TResult? Function()? successWriteTodo,
     TResult? Function(String messageError)? failureWriteTodo,
     TResult? Function()? updateTextWriteTodo,
-    TResult? Function()? updateColorCodeWriteTodo,
+    TResult? Function(int colorCode)? updateColorCodeWriteTodo,
   }) {
     return updateTextWriteTodo?.call();
   }
@@ -711,7 +711,7 @@ class _$UpdateTextWriteTodoImpl implements UpdateTextWriteTodo {
     TResult Function()? successWriteTodo,
     TResult Function(String messageError)? failureWriteTodo,
     TResult Function()? updateTextWriteTodo,
-    TResult Function()? updateColorCodeWriteTodo,
+    TResult Function(int colorCode)? updateColorCodeWriteTodo,
     required TResult orElse(),
   }) {
     if (updateTextWriteTodo != null) {
@@ -775,6 +775,8 @@ abstract class _$$UpdateColorCodeWriteTodoImplCopyWith<$Res> {
           _$UpdateColorCodeWriteTodoImpl value,
           $Res Function(_$UpdateColorCodeWriteTodoImpl) then) =
       __$$UpdateColorCodeWriteTodoImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int colorCode});
 }
 
 /// @nodoc
@@ -785,27 +787,52 @@ class __$$UpdateColorCodeWriteTodoImplCopyWithImpl<$Res>
       _$UpdateColorCodeWriteTodoImpl _value,
       $Res Function(_$UpdateColorCodeWriteTodoImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? colorCode = null,
+  }) {
+    return _then(_$UpdateColorCodeWriteTodoImpl(
+      colorCode: null == colorCode
+          ? _value.colorCode
+          : colorCode // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$UpdateColorCodeWriteTodoImpl implements UpdateColorCodeWriteTodo {
-  const _$UpdateColorCodeWriteTodoImpl();
+  const _$UpdateColorCodeWriteTodoImpl({required this.colorCode});
+
+  @override
+  final int colorCode;
 
   @override
   String toString() {
-    return 'WriteTodoState.updateColorCodeWriteTodo()';
+    return 'WriteTodoState.updateColorCodeWriteTodo(colorCode: $colorCode)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$UpdateColorCodeWriteTodoImpl);
+            other is _$UpdateColorCodeWriteTodoImpl &&
+            (identical(other.colorCode, colorCode) ||
+                other.colorCode == colorCode));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, colorCode);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateColorCodeWriteTodoImplCopyWith<_$UpdateColorCodeWriteTodoImpl>
+      get copyWith => __$$UpdateColorCodeWriteTodoImplCopyWithImpl<
+          _$UpdateColorCodeWriteTodoImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -815,9 +842,9 @@ class _$UpdateColorCodeWriteTodoImpl implements UpdateColorCodeWriteTodo {
     required TResult Function() successWriteTodo,
     required TResult Function(String messageError) failureWriteTodo,
     required TResult Function() updateTextWriteTodo,
-    required TResult Function() updateColorCodeWriteTodo,
+    required TResult Function(int colorCode) updateColorCodeWriteTodo,
   }) {
-    return updateColorCodeWriteTodo();
+    return updateColorCodeWriteTodo(colorCode);
   }
 
   @override
@@ -828,9 +855,9 @@ class _$UpdateColorCodeWriteTodoImpl implements UpdateColorCodeWriteTodo {
     TResult? Function()? successWriteTodo,
     TResult? Function(String messageError)? failureWriteTodo,
     TResult? Function()? updateTextWriteTodo,
-    TResult? Function()? updateColorCodeWriteTodo,
+    TResult? Function(int colorCode)? updateColorCodeWriteTodo,
   }) {
-    return updateColorCodeWriteTodo?.call();
+    return updateColorCodeWriteTodo?.call(colorCode);
   }
 
   @override
@@ -841,11 +868,11 @@ class _$UpdateColorCodeWriteTodoImpl implements UpdateColorCodeWriteTodo {
     TResult Function()? successWriteTodo,
     TResult Function(String messageError)? failureWriteTodo,
     TResult Function()? updateTextWriteTodo,
-    TResult Function()? updateColorCodeWriteTodo,
+    TResult Function(int colorCode)? updateColorCodeWriteTodo,
     required TResult orElse(),
   }) {
     if (updateColorCodeWriteTodo != null) {
-      return updateColorCodeWriteTodo();
+      return updateColorCodeWriteTodo(colorCode);
     }
     return orElse();
   }
@@ -896,5 +923,11 @@ class _$UpdateColorCodeWriteTodoImpl implements UpdateColorCodeWriteTodo {
 }
 
 abstract class UpdateColorCodeWriteTodo implements WriteTodoState {
-  const factory UpdateColorCodeWriteTodo() = _$UpdateColorCodeWriteTodoImpl;
+  const factory UpdateColorCodeWriteTodo({required final int colorCode}) =
+      _$UpdateColorCodeWriteTodoImpl;
+
+  int get colorCode;
+  @JsonKey(ignore: true)
+  _$$UpdateColorCodeWriteTodoImplCopyWith<_$UpdateColorCodeWriteTodoImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

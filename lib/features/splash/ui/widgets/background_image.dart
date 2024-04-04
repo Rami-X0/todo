@@ -13,7 +13,7 @@ class BackgroundImage extends StatelessWidget {
       children: [
         Container(
           decoration: BoxDecoration(
-            color: ColorsManager.primaryBlue,
+            color: ColorsManager.darkBlue,
             image: const DecorationImage(
                 image: AssetImage(
                   'assets/images/background_splash.png',

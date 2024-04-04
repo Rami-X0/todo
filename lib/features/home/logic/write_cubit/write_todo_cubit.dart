@@ -5,12 +5,13 @@ import 'package:todo/core/helper/hive_constants.dart';
 import 'package:todo/features/home/data/model/todo_model.dart';
 import 'package:todo/features/home/logic/write_cubit/write_todo_state.dart';
 
-class WriteCubit extends Cubit<WriteTodoState> {
+class WriteTodoCubit extends Cubit<WriteTodoState> {
   final Box _box = Hive.box(HiveConstants.todoBox);
-  int colorCode = 0xff000000;
+  int colorCode = 0xff526D82;
   String text = '';
+  final TextEditingController todoController = TextEditingController();
 
-  WriteCubit() : super(const WriteTodoState.initial());
+  WriteTodoCubit() : super(const WriteTodoState.initial());
 
   void updateText(String text) {
     this.text = text;
@@ -19,7 +20,7 @@ class WriteCubit extends Cubit<WriteTodoState> {
 
   void updateColorCode(int colorCode) {
     this.colorCode = colorCode;
-    emit(const WriteTodoState.updateColorCodeWriteTodo());
+    emit(WriteTodoState.updateColorCodeWriteTodo(colorCode: colorCode));
   }
 
   void addPutTodo(int indexDb) {
@@ -77,4 +78,22 @@ class WriteCubit extends Cubit<WriteTodoState> {
           messageError: '$errorMessage:${failure.toString()}'));
     }
   }
+
+  final List<int> colors = const [
+    0xff526D82,
+    0xff1F6E8C,
+    0xff556E53,
+    0xff50727B,
+    0xff5C8374,
+    0xffA76F6F,
+    0xff6D5D6E,
+    0xff635985,
+    0xff50577A,
+    0xff3F4E4F,
+    0xff3C6562,
+    0xff7D5E53,
+    0xff19376D,
+    0xff395B64,
+    0xff31363F,
+  ];
 }

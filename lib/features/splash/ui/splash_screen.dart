@@ -34,7 +34,7 @@ class _SplashScreenState extends State<SplashScreen> {
       ),
     );
     return Scaffold(
-      backgroundColor: ColorsManager.primaryBlue,
+      backgroundColor: ColorsManager.darkBlue,
       body: const BackgroundImage(),
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:todo/core/theming/colors.dart';
 import 'package:todo/core/theming/font_weight_helper.dart';
 
 class TextStyles {
@@ -7,5 +8,8 @@ class TextStyles {
     color: Colors.white,
     fontWeight: FontWeightHelper.bold,
     fontSize: 38.sp,
-  );
+  ); static TextStyle font18secondaryColorBold =TextStyle(
+      fontSize: 18.sp,
+      color: ColorsManager.secondaryColor,
+      fontWeight: FontWeightHelper.bold);
 }

@@ -51,7 +51,8 @@ dependencies:
   # Code generation for immutable classes that has a simple
   freezed: ^2.4.7
   freezed_annotation: ^2.4.1
-
+  # Add icons in flutter
+  font_awesome_flutter: ^10.7.0
 
 dev_dependencies:
   hive_generator: ^2.0.1
