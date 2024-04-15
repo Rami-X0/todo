@@ -4,19 +4,18 @@ import 'package:todo/core/helper/hive_constants.dart';
 import 'package:todo/features/home/data/model/todo_model.dart';
 import 'package:todo/features/home/logic/read_cubit/read_todo_state.dart';
 
-class ReadCubit extends Cubit<ReadTodoState> {
+class ReadTodoCubit extends Cubit<ReadTodoState> {
   final Box _box = Hive.box(HiveConstants.todoBox);
 
-  ReadCubit() : super(const ReadTodoState.initial());
+  ReadTodoCubit() : super(const ReadTodoState.initial());
 
   void getTodos() {
     emit(const ReadTodoState.loadingReadTodo());
     try {
       List<TodoModel> todos =
-          List.from(_box.get(_box.get(HiveConstants.todoList), defaultValue: []))
+          List.from(_box.get(HiveConstants.todoList, defaultValue: []))
               .cast<TodoModel>();
-
-      emit( ReadTodoState.successReadTodo(todos: todos));
+      emit(ReadTodoState.successReadTodo(todos: todos));
     } catch (failure) {
       emit(ReadTodoState.failureReadTodo(
           messageError: 'getTodoMessageError:${failure.toString()}'));

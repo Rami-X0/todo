@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
+import 'package:todo/core/helper/extension.dart';
 import 'package:todo/core/theming/colors.dart';
+import 'package:todo/core/theming/styles.dart';
 import 'package:todo/features/home/logic/write_cubit/write_todo_cubit.dart';
 import 'package:todo/features/home/logic/write_cubit/write_todo_state.dart';
 
@@ -13,9 +16,11 @@ class AddTodoButton extends StatelessWidget {
     return BlocBuilder<WriteTodoCubit, WriteTodoState>(
       builder: (context, state) {
         return InkWell(
-          onTap: () {},
+          onTap: () {
+            onTapAddTodo(context);
+          },
           child: AnimatedContainer(
-            duration: const Duration(milliseconds: 750),
+            duration: const Duration(milliseconds: 1000),
             width: 200,
             height: 85.h,
             decoration: BoxDecoration(
@@ -33,10 +38,30 @@ class AddTodoButton extends StatelessWidget {
                 )
               ],
             ),
-            child: const Center(child: Text('go')),
+            child: Center(
+                child: Text(
+              'save',
+              style: TextStyles.font18secondaryColorBold,
+            )),
           ),
         );
       },
     );
+  }
+
+  void onTapAddTodo(BuildContext context) {
+    final writeCubit = context.read<WriteTodoCubit>();
+    if (writeCubit.formKey.currentState!.validate()) {
+      updateDate(context);
+      writeCubit.addTodoInDB();
+      context.pop();
+    }
+  }
+
+  void updateDate(BuildContext context) {
+    final writeCubit = context.read<WriteTodoCubit>();
+    DateTime dateTime = DateTime.now();
+    String date = DateFormat("yyyy-MM-dd").format(dateTime);
+    writeCubit.updateDateTime(date.toString());
   }
 }

@@ -9,7 +9,7 @@ extension NavigatorHelper on BuildContext {
     Navigator.pushNamedAndRemoveUntil(this, name, (route) => false);
   }
 
-  void pop() {
+Future  <void> pop() async {
     Navigator.pop(this);
   }
 }

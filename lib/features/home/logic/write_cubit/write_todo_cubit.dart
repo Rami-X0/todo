@@ -9,18 +9,25 @@ class WriteTodoCubit extends Cubit<WriteTodoState> {
   final Box _box = Hive.box(HiveConstants.todoBox);
   int colorCode = 0xff526D82;
   String text = '';
+  String date = '';
   final TextEditingController todoController = TextEditingController();
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   WriteTodoCubit() : super(const WriteTodoState.initial());
 
   void updateText(String text) {
     this.text = text;
-    emit(const WriteTodoState.updateTextWriteTodo());
+    emit(WriteTodoState.updateTextWriteTodo(text: text));
   }
 
   void updateColorCode(int colorCode) {
     this.colorCode = colorCode;
     emit(WriteTodoState.updateColorCodeWriteTodo(colorCode: colorCode));
+  }
+
+  void updateDateTime(String date) {
+    this.date = date;
+    emit(WriteTodoState.updateDateWriteTodo(date: date));
   }
 
   void addPutTodo(int indexDb) {
@@ -39,11 +46,17 @@ class WriteTodoCubit extends Cubit<WriteTodoState> {
     }, 'deletePutTodo');
   }
 
-  void addTodoInDB() {
+  addTodoInDB() {
     _writeTryCatch(() {
       List<TodoModel> todos = _getTodosFromDb();
       todos.add(
-          TodoModel(itemIndex: todos.length, colorCode: colorCode, text: text));
+        TodoModel(
+          itemIndex: todos.length,
+          colorCode: colorCode,
+          text: text,
+          date: date,
+        ),
+      );
       putTodos(todos);
     }, 'addTodoInDB');
   }

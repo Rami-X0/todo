@@ -13,7 +13,8 @@ part'write_todo_state.freezed.dart';
   const factory WriteTodoState.failureWriteTodo(
       {required String messageError}) = FailureWriteTodo;
 
-  const factory WriteTodoState.updateTextWriteTodo() = UpdateTextWriteTodo;
+  const factory WriteTodoState.updateTextWriteTodo({required String text}) = UpdateTextWriteTodo;
   const factory WriteTodoState.updateColorCodeWriteTodo({required int colorCode}) = UpdateColorCodeWriteTodo;
+  const factory WriteTodoState.updateDateWriteTodo({required String date}) = UpdateDateWriteTodo;
 
 }

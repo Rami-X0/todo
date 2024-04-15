@@ -20,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void navigationToThenAnimationSplash() {
-    Future.delayed(const Duration(milliseconds: 1350), () {
+    Future.delayed(const Duration(milliseconds: 1400), () {
       context.pushNamedAndRemoveUntil(Routes.homeScreen);
     });
   }

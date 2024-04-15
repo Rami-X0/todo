@@ -12,22 +12,25 @@ class TodoModel extends HiveObject {
   final List<String> textTodo;
   @HiveField(3)
   final String text;
+  @HiveField(4)
+  final String date;
 
   TodoModel({
     required this.itemIndex,
     required this.colorCode,
     required this.text,
+    required this.date,
     this.textTodo = const [],
   });
 
   TodoModel addTodo(String todo) {
-    final List<String> newTodo = List.from(textTodo);
+    List<String> newTodo = List.from(textTodo);
     newTodo.add(todo);
     return _initializeTodo(newTodo);
   }
 
   TodoModel deleteTodo(int index) {
-    final List<String> deleteTodo = List.from(textTodo);
+    List<String> deleteTodo = List.from(textTodo);
     deleteTodo.removeAt(index);
     return _initializeTodo(deleteTodo);
   }
@@ -37,6 +40,7 @@ class TodoModel extends HiveObject {
       itemIndex: itemIndex - 1,
       colorCode: colorCode,
       text: text,
+      date: date,
       textTodo: textTodo,
     );
   }
@@ -45,6 +49,7 @@ class TodoModel extends HiveObject {
     return TodoModel(
       itemIndex: itemIndex,
       colorCode: colorCode,
+      date: date,
       text: text,
       textTodo: todo,
     );

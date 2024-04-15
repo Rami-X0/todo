@@ -8,8 +8,19 @@ class TextStyles {
     color: Colors.white,
     fontWeight: FontWeightHelper.bold,
     fontSize: 38.sp,
-  ); static TextStyle font18secondaryColorBold =TextStyle(
+  );
+  static TextStyle font18secondaryColorBold = TextStyle(
       fontSize: 18.sp,
       color: ColorsManager.secondaryColor,
       fontWeight: FontWeightHelper.bold);
+  static TextStyle font20WhiteBold = TextStyle(
+    color: ColorsManager.white,
+    fontWeight: FontWeightHelper.bold,
+    fontSize: 20.sp,
+  );
+static TextStyle font10darkBlueBold = TextStyle(
+    color: ColorsManager.darkBlue,
+    fontWeight: FontWeightHelper.bold,
+    fontSize: 10.sp,
+  );
 }

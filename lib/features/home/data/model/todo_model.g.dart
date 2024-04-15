@@ -20,6 +20,7 @@ class TodoModelAdapter extends TypeAdapter<TodoModel> {
       itemIndex: fields[0] as int,
       colorCode: fields[1] as int,
       text: fields[3] as String,
+      date: fields[4] as String,
       textTodo: (fields[2] as List).cast<String>(),
     );
   }
@@ -27,7 +28,7 @@ class TodoModelAdapter extends TypeAdapter<TodoModel> {
   @override
   void write(BinaryWriter writer, TodoModel obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(5)
       ..writeByte(0)
       ..write(obj.itemIndex)
       ..writeByte(1)
@@ -35,7 +36,9 @@ class TodoModelAdapter extends TypeAdapter<TodoModel> {
       ..writeByte(2)
       ..write(obj.textTodo)
       ..writeByte(3)
-      ..write(obj.text);
+      ..write(obj.text)
+      ..writeByte(4)
+      ..write(obj.date);
   }
 
   @override

@@ -5,6 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:todo/core/theming/colors.dart';
 import 'package:todo/core/theming/styles.dart';
 import 'package:todo/features/home/logic/write_cubit/write_todo_cubit.dart';
+import 'package:todo/features/home/logic/write_cubit/write_todo_state.dart';
 
 class WriteTodoTextFormField extends StatefulWidget {
   const WriteTodoTextFormField({super.key});
@@ -19,40 +20,53 @@ class _WriteTodoTextFormFieldState extends State<WriteTodoTextFormField> {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedSize(
-      alignment: Alignment.topCenter,
-      duration: const Duration(milliseconds: 200),
-      child: TextFormField(
-        autofocus: true,
-        textInputAction: TextInputAction.done,
-        keyboardType: TextInputType.text,
-        onEditingComplete: () {
-          FocusScope.of(context).requestFocus(FocusNode());
-        },
-        controller: context.read<WriteTodoCubit>().todoController,
-        cursorOpacityAnimates: true,
-        cursorColor: ColorsManager.secondaryColor,
-        decoration: _inputDecoration(),
-        maxLines: stopMaxLine ? null : 3,
-        validator: (value) {
-          return '';
-        },
-        onChanged: (value) {
-          controlMaxLine(value);
-        },
-        style: TextStyles.font18secondaryColorBold,
-      ),
+    return BlocBuilder<WriteTodoCubit, WriteTodoState>(
+      builder: (context, state) {
+        return Column(
+          children: [
+            AnimatedSize(
+              alignment: Alignment.topCenter,
+              duration: const Duration(milliseconds: 200),
+              child: Form(
+                key: context.read<WriteTodoCubit>().formKey,
+                child: _textFormField(),
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 
-  void controlMaxLine(String value) {
-    if (value.length == 87) {
-      stopMaxLine = false;
-      setState(() {});
-    } else if (value.length <= 87) {
-      stopMaxLine = true;
-      setState(() {});
+  TextFormField _textFormField() {
+    return TextFormField(
+      autofocus: true,
+      textInputAction: TextInputAction.done,
+      keyboardType: TextInputType.text,
+      onEditingComplete: () {
+        FocusScope.of(context).requestFocus(FocusNode());
+      },
+      controller: context.read<WriteTodoCubit>().todoController,
+      cursorOpacityAnimates: true,
+      cursorColor: ColorsManager.secondaryColor,
+      decoration: _inputDecoration(),
+      maxLines: 3,
+      minLines: 1,
+      validator: (value) {
+        return validatorTodo(value);
+      },
+      onChanged: (value) {
+        context.read<WriteTodoCubit>().updateText(value);
+      },
+      style: TextStyles.font18secondaryColorBold,
+    );
+  }
+
+  String? validatorTodo(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Please Enter Todo';
     }
+    return null;
   }
 
   InputDecoration _inputDecoration() {

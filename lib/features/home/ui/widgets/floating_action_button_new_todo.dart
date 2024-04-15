@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:todo/core/theming/colors.dart';
+import 'package:todo/features/home/logic/read_cubit/read_todo_cubit.dart';
 import 'package:todo/features/home/logic/write_cubit/write_todo_cubit.dart';
 import 'package:todo/features/home/ui/widgets/bottom_sheet_item.dart';
 
@@ -32,7 +33,14 @@ class FloatingActionButtonNewTodo extends StatelessWidget {
         return const BottomSheetItem();
       },
     ).whenComplete(
-      () => context.read<WriteTodoCubit>().todoController.clear(),
+      () {
+        thenAddTodo(context);
+      }
     );
+  }
+
+  void thenAddTodo(BuildContext context) {
+    BlocProvider.of<ReadTodoCubit>(context).getTodos();
+    context.read<WriteTodoCubit>().todoController.clear();
   }
 }
