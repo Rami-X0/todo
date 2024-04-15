@@ -46,7 +46,7 @@ class WriteTodoCubit extends Cubit<WriteTodoState> {
     }, 'deletePutTodo');
   }
 
-  addTodoInDB() {
+  void addTodoInDB() {
     _writeTryCatch(() {
       List<TodoModel> todos = _getTodosFromDb();
       todos.add(
@@ -67,8 +67,8 @@ class WriteTodoCubit extends Cubit<WriteTodoState> {
       todos.removeAt(indexDb);
       for (var i = indexDb; i < todos.length; i++) {
         todos[i] = todos[i].decrementIndex();
-        putTodos(todos);
       }
+      putTodos(todos);
     }, 'deleteTodoInDB');
   }
 

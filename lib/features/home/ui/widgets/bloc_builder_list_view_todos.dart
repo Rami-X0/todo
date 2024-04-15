@@ -27,7 +27,7 @@ class BlocBuilderListViewTodos extends StatelessWidget {
 
   Widget _listViewTodos(List<TodoModel> todo) {
     return Padding(
-      padding:  EdgeInsets.symmetric(horizontal: 12.w),
+      padding: EdgeInsets.symmetric(horizontal: 12.w),
       child: ListView.separated(
         itemBuilder: (context, index) {
           return TodoViewItems(
