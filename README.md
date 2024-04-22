@@ -1,7 +1,8 @@
 # Home Screen
 
 <div class="image-container">
+    <img src="https://github.com/Rami-X0/todo/assets/156665608/670271a0-7035-4ac6-a4f4-8be4e8df3dbe" width="248">
   <img src="https://github.com/Rami-X0/todo/assets/156665608/a08b5f71-684a-4799-92de-c1422facc3fe" width="248">
-  <img src="https://github.com/Rami-X0/todo/assets/156665608/888deafe-5c45-4944-8ad4-19bd9fa9796d" width="248">
-  <img src="https://github.com/Rami-X0/todo/assets/156665608/a2e4deb4-21bb-449e-9bcd-ad6c94d63f26" width="248">
-  <img src="https://github.com/Rami-X0/todo/assets/156665608/e796eb81-55cf-4ae0-a549-377daafe0bda" width="248"></div>
+  <img src="https://github.com/Rami-X0/todo/assets/156665608/9be4906f-da9d-439a-a5d1-64368ad145c1" width="248">
+  <img src="https://github.com/Rami-X0/todo/assets/156665608/b5795bf5-9320-4bfa-b35f-72f0dfa08c0c" width="248">
+  <img src="https://github.com/Rami-X0/todo/assets/156665608/1c94bace-1f7c-4f1a-a52f-7a489754067d" width="248"></div>
