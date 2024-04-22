@@ -1,30 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:todo/core/theming/colors.dart';
+import 'package:todo/core/widgets/app_text_button.dart';
 import 'package:todo/features/home/data/model/todo_model.dart';
 import 'package:todo/features/home/logic/read_cubit/read_todo_cubit.dart';
+import 'package:todo/features/home/logic/read_cubit/read_todo_state.dart';
 import 'package:todo/features/home/logic/write_cubit/write_todo_cubit.dart';
-import 'package:todo/features/home/ui/widgets/bottom_sheet_item.dart';
 
-class FloatingActionButtonNewTodo extends StatelessWidget {
-  final TodoModel? todoModel;
+import 'bottom_sheet_item.dart';
 
-  const FloatingActionButtonNewTodo({
+class EditTodo extends StatelessWidget {
+  final TodoModel todoModel;
+
+  const EditTodo({
     super.key,
-    this.todoModel,
+    required this.todoModel,
   });
 
   @override
   Widget build(BuildContext context) {
-    return FloatingActionButton(
-      backgroundColor: ColorsManager.primaryColor,
-      splashColor: ColorsManager.white,
-      onPressed: () => actionThenTapFloatingButton(context),
-      child: FaIcon(
-        FontAwesomeIcons.pen,
-        color: ColorsManager.secondaryColor,
-      ),
+    return BlocBuilder<ReadTodoCubit, ReadTodoState>(
+      builder: (context, state) {
+        return AppTextButton(
+          textColor: Colors.white,
+          text: 'edite',
+          onPressed: () => actionThenTapFloatingButton(context),
+        );
+      },
     );
   }
 
@@ -35,9 +36,9 @@ class FloatingActionButtonNewTodo extends StatelessWidget {
       backgroundColor: Colors.transparent,
       builder: (context) {
         return BottomSheetItem(
-          textTodo: todoModel?.text ?? '',
-          editTodo: false,
-          index: todoModel?.itemIndex ?? -1,
+          textTodo: todoModel.text,
+          editTodo: true,
+          index: todoModel.itemIndex,
         );
       },
     ).whenComplete(() {
@@ -46,7 +47,7 @@ class FloatingActionButtonNewTodo extends StatelessWidget {
   }
 
   void thenAddTodo(BuildContext context) {
-    BlocProvider.of<ReadTodoCubit>(context).getTodos();
+    context.read<ReadTodoCubit>().getTodos();
     context.read<WriteTodoCubit>().todoController.clear();
   }
 }

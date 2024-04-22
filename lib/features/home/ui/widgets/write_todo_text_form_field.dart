@@ -5,10 +5,14 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:todo/core/theming/colors.dart';
 import 'package:todo/core/theming/styles.dart';
 import 'package:todo/features/home/logic/write_cubit/write_todo_cubit.dart';
-import 'package:todo/features/home/logic/write_cubit/write_todo_state.dart';
 
 class WriteTodoTextFormField extends StatefulWidget {
-  const WriteTodoTextFormField({super.key});
+  final String textTodo;
+
+  const WriteTodoTextFormField({
+    super.key,
+    required this.textTodo,
+  });
 
   @override
   State<WriteTodoTextFormField> createState() => _WriteTodoTextFormFieldState();
@@ -16,25 +20,32 @@ class WriteTodoTextFormField extends StatefulWidget {
 
 class _WriteTodoTextFormFieldState extends State<WriteTodoTextFormField> {
   final double border = 15;
-  bool stopMaxLine = true;
+
+  @override
+  void initState() {
+    super.initState();
+    todoControllerEqualTodoText();
+  }
+
+  void todoControllerEqualTodoText() {
+    final writeCubit = context.read<WriteTodoCubit>();
+    writeCubit.todoController.text = widget.textTodo;
+    writeCubit.updateText(writeCubit.todoController.text);
+  }
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<WriteTodoCubit, WriteTodoState>(
-      builder: (context, state) {
-        return Column(
-          children: [
-            AnimatedSize(
-              alignment: Alignment.topCenter,
-              duration: const Duration(milliseconds: 200),
-              child: Form(
-                key: context.read<WriteTodoCubit>().formKey,
-                child: _textFormField(),
-              ),
-            ),
-          ],
-        );
-      },
+    return Column(
+      children: [
+        AnimatedSize(
+          alignment: Alignment.topCenter,
+          duration: const Duration(milliseconds: 200),
+          child: Form(
+            key: context.read<WriteTodoCubit>().formKey,
+            child: _textFormField(),
+          ),
+        ),
+      ],
     );
   }
 
@@ -56,10 +67,15 @@ class _WriteTodoTextFormFieldState extends State<WriteTodoTextFormField> {
         return validatorTodo(value);
       },
       onChanged: (value) {
-        context.read<WriteTodoCubit>().updateText(value);
+        onChanged(value);
       },
       style: TextStyles.font18secondaryColorBold,
     );
+  }
+
+  void onChanged(String value) {
+    final writeCubit = context.read<WriteTodoCubit>();
+    writeCubit.updateText(writeCubit.todoController.text);
   }
 
   String? validatorTodo(String? value) {

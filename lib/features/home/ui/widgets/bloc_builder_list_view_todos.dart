@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:todo/core/theming/colors.dart';
 import 'package:todo/core/widgets/app_loading.dart';
 import 'package:todo/features/home/data/model/todo_model.dart';
@@ -18,27 +19,52 @@ class BlocBuilderListViewTodos extends StatelessWidget {
         return state.when(
           initial: () => const SizedBox.shrink(),
           loadingReadTodo: () => const AppLoading(),
-          successReadTodo: (todo) => _listViewTodos(todo),
+          successReadTodo: (todo) {
+            if (todo.isEmpty) {
+              return noTodo();
+            } else {
+              return _listViewTodos(todo);
+            }
+          },
           failureReadTodo: (errorMessage) => _failureReadTodo(),
         );
       },
     );
   }
 
+  Widget noTodo() {
+    return Center(
+      child: CircleAvatar(
+        backgroundColor: Colors.white54,
+        maxRadius: 110.w,
+        child: SvgPicture.asset(
+          'assets/svgs/no_todo.svg',
+          width: 180.w,
+        ),
+      ),
+    );
+  }
+
   Widget _listViewTodos(List<TodoModel> todo) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 12.w),
-      child: ListView.separated(
-        itemBuilder: (context, index) {
-          return TodoViewItems(
-            index: index,
-            todoModel: todo[index],
-          );
-        },
-        separatorBuilder: (context, index) {
-          return _dividerSpace();
-        },
-        itemCount: todo.length,
+      child: Column(
+        children: [
+          Expanded(
+            child: ListView.separated(
+              itemBuilder: (context, index) {
+                return TodoViewItems(
+                  index: index,
+                  todoModel: todo[index],
+                );
+              },
+              separatorBuilder: (context, index) {
+                return _dividerSpace();
+              },
+              itemCount: todo.length,
+            ),
+          ),
+        ],
       ),
     );
   }

@@ -7,6 +7,7 @@ import 'package:todo/features/home/data/model/todo_model.dart';
 import 'package:todo/features/home/logic/write_cubit/write_todo_cubit.dart';
 import 'package:todo/features/home/logic/write_cubit/write_todo_state.dart';
 import 'package:todo/features/home/ui/widgets/delete_todo.dart';
+import 'package:todo/features/home/ui/widgets/edit_todo.dart';
 
 class TodoViewItems extends StatelessWidget {
   final int index;
@@ -24,10 +25,10 @@ class TodoViewItems extends StatelessWidget {
           todoModel: todoModel,
           child: Container(
             width: 370.w,
-            height: 80.h,
+            height: 90.h,
             padding: EdgeInsets.symmetric(vertical: 2.h, horizontal: 10.w),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(15),
               color: Color(todoModel.colorCode),
             ),
             child: _showTextTodo(todoModel),
@@ -37,10 +38,9 @@ class TodoViewItems extends StatelessWidget {
     );
   }
 
-
-
   Widget _showTextTodo(TodoModel todoModel) {
     return Row(
+      mainAxisSize: MainAxisSize.min,
       children: [
         Text(
           '${todoModel.itemIndex + 1} :',
@@ -57,13 +57,21 @@ class TodoViewItems extends StatelessWidget {
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               ),
-              Gap(10.h),
-              Text(
-                todoModel.date,
-                style: TextStyles.font20WhiteBold.copyWith(
-                  fontSize: 12.sp,
-                ),
-              )
+              // Gap(10.h),
+              Row(
+                children: [
+                  Text(
+                    todoModel.date,
+                    style: TextStyles.font20WhiteBold.copyWith(
+                      fontSize: 12.sp,
+                    ),
+                  ),
+                  Gap(120.w),
+                  EditTodo(
+                    todoModel: todoModel,
+                  )
+                ],
+              ),
             ],
           ),
         ),

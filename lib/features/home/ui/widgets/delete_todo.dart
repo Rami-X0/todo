@@ -13,7 +13,7 @@ class DeleteTodo extends StatelessWidget {
   final int index;
   final TodoModel todoModel;
   final Widget child;
-
+final int duration=400;
   const DeleteTodo({
     super.key,
     required this.index,
@@ -24,11 +24,14 @@ class DeleteTodo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Dismissible(
+    movementDuration: Duration(milliseconds: duration),
+      resizeDuration: Duration(milliseconds: duration),
       key: UniqueKey(),
       background: backgroundDismissible(),
       direction: DismissDirection.endToStart,
       onDismissed: (direction) => _onDismissed(context),
       confirmDismiss: (direction) => _confirmDismiss(direction, context),
+
       child: child,
     );
   }

@@ -10,7 +10,16 @@ import 'package:todo/features/home/ui/widgets/choose_color_list_view.dart';
 import 'package:todo/features/home/ui/widgets/write_todo_text_form_field.dart';
 
 class BottomSheetItem extends StatelessWidget {
-  const BottomSheetItem({super.key});
+  final String textTodo;
+  final bool editTodo;
+  final int index;
+
+  const BottomSheetItem({
+    super.key,
+    required this.textTodo,
+    required this.editTodo,
+     required this.index,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -29,11 +38,16 @@ class BottomSheetItem extends StatelessWidget {
             ),
             child: Column(
               children: [
-                const WriteTodoTextFormField(),
+                WriteTodoTextFormField(
+                  textTodo: textTodo,
+                ),
                 Gap(15.h),
                 const ChooseColorListView(),
                 Gap(15.h),
-                const AddTodoButton(),
+                AddTodoButton(
+                  editTodo: editTodo,
+                  index: index,
+                ),
               ],
             ),
           );

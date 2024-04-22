@@ -10,7 +10,8 @@ class WriteTodoCubit extends Cubit<WriteTodoState> {
   int colorCode = 0xff526D82;
   String text = '';
   String date = '';
-  final TextEditingController todoController = TextEditingController();
+
+  TextEditingController todoController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   WriteTodoCubit() : super(const WriteTodoState.initial());
@@ -30,20 +31,13 @@ class WriteTodoCubit extends Cubit<WriteTodoState> {
     emit(WriteTodoState.updateDateWriteTodo(date: date));
   }
 
-  void addPutTodo(int indexDb) {
+  void updateTodo(int indexDb) {
     _writeTryCatch(() {
       List<TodoModel> todos = _getTodosFromDb();
-      todos[indexDb] = todos[indexDb].addTodo(text);
+      todos[indexDb] =
+          todos[indexDb].updateTodo(todoController.text, date, colorCode);
       putTodos(todos);
     }, 'addPutTodo');
-  }
-
-  void deletePutTodo(int indexDb) {
-    _writeTryCatch(() {
-      List<TodoModel> todos = _getTodosFromDb();
-      todos[indexDb] = todos[indexDb].deleteTodo(indexDb);
-      putTodos(todos);
-    }, 'deletePutTodo');
   }
 
   void addTodoInDB() {

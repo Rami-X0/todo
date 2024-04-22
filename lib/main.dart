@@ -12,5 +12,6 @@ void main() async {
   await Hive.initFlutter();
   await Hive.openBox(HiveConstants.todoBox);
   Bloc.observer = MyBlocObserver();
+//await ScreenUtil.ensureScreenSize();
   runApp(const TodoApp());
 }

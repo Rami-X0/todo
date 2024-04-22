@@ -23,16 +23,16 @@ class TodoModel extends HiveObject {
     this.textTodo = const [],
   });
 
-  TodoModel addTodo(String todo) {
+  TodoModel updateTodo(String text, String date, int colorCode) {
     List<String> newTodo = List.from(textTodo);
-    newTodo.add(todo);
-    return _initializeTodo(newTodo);
+    newTodo.add(text);
+    return _initializeTodo(text: text, date: date, colorCode: colorCode);
   }
 
   TodoModel deleteTodo(int index) {
     List<String> deleteTodo = List.from(textTodo);
     deleteTodo.removeAt(index);
-    return _initializeTodo(deleteTodo);
+    return _initializeTodo();
   }
 
   TodoModel decrementIndex() {
@@ -45,13 +45,17 @@ class TodoModel extends HiveObject {
     );
   }
 
-  TodoModel _initializeTodo(List<String> todo) {
+  TodoModel _initializeTodo({
+    String? text,
+    String? date,
+    int? colorCode,
+  }) {
     return TodoModel(
       itemIndex: itemIndex,
-      colorCode: colorCode,
-      date: date,
-      text: text,
-      textTodo: todo,
+      colorCode: colorCode!,
+      date: date!,
+      text: text!,
+      textTodo: textTodo,
     );
   }
 }

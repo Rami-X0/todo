@@ -16,11 +16,12 @@ class HomeScreen extends StatelessWidget {
         statusBarIconBrightness: Brightness.dark,
       ),
     );
-    return const Scaffold(
+    return  const Scaffold(
       body: SafeArea(
         child: BlocBuilderListViewTodos(),
       ),
-      floatingActionButton: FloatingActionButtonNewTodo(),
+      floatingActionButton: FloatingActionButtonNewTodo( ),
+
     );
   }
 }

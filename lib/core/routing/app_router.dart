@@ -28,8 +28,8 @@ Route generateRoute(RouteSettings settings) {
 Widget multiBlocProvider({required Widget child}) {
   return MultiBlocProvider(
     providers: [
-      BlocProvider<ReadTodoCubit>(create:(context)=> ReadTodoCubit()..getTodos()),
       BlocProvider<WriteTodoCubit>(create:(context)=> WriteTodoCubit()),
+      BlocProvider<ReadTodoCubit>(create:(context)=> ReadTodoCubit()..getTodos()),
 
     ],
     child: child,

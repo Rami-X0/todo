@@ -6,11 +6,13 @@ import 'package:todo/core/theming/styles.dart';
 class AppTextButton extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
+  final Color? textColor;
 
   const AppTextButton({
     super.key,
     required this.text,
     required this.onPressed,
+    this.textColor,
   });
 
   @override
@@ -25,16 +27,19 @@ class AppTextButton extends StatelessWidget {
               ),
             ),
           ),
-         overlayColor: MaterialStateProperty.all(
-           ColorsManager.darkBlue.withOpacity(0.2)
-         ),
-
+          overlayColor:
+              MaterialStateProperty.all(ColorsManager.white.withOpacity(0.2)),
+          fixedSize: MaterialStateProperty.all(
+            Size(70.w, 15.h),
+          ),
         ),
+
         onPressed: onPressed,
         child: Text(
           text,
           style: TextStyles.font10darkBlueBold.copyWith(
             fontSize: 14.sp,
+          color: textColor
           ),
         ));
   }
