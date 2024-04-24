@@ -61,8 +61,8 @@ class _WriteTodoTextFormFieldState extends State<WriteTodoTextFormField> {
       cursorOpacityAnimates: true,
       cursorColor: ColorsManager.secondaryColor,
       decoration: _inputDecoration(),
-      maxLines: 3,
-      minLines: 1,
+      maxLines: 8,
+      minLines: 6,
       validator: (value) {
         return validatorTodo(value);
       },
@@ -87,12 +87,17 @@ class _WriteTodoTextFormFieldState extends State<WriteTodoTextFormField> {
 
   InputDecoration _inputDecoration() {
     return InputDecoration(
-      contentPadding: const EdgeInsets.symmetric(
-        vertical: 17,
-        horizontal: 20,
+      contentPadding: EdgeInsets.symmetric(
+        vertical: 17.h,
+        horizontal: 20.w,
       ),
       hintStyle: TextStyles.font18secondaryColorBold,
-      hintText: 'New Todo',
+      alignLabelWithHint: true,
+      label: Text(
+        'New Todo',
+        style: TextStyles.font18secondaryColorBold,
+      ),
+      hintFadeDuration: const Duration(milliseconds: 750),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(border),
         borderSide: BorderSide(
@@ -113,7 +118,7 @@ class _WriteTodoTextFormFieldState extends State<WriteTodoTextFormField> {
       ),
       suffixIcon: Padding(
         padding: EdgeInsets.symmetric(
-          vertical: 19.h,
+          vertical: 0.h,
           horizontal: 20.w,
         ),
         child: FaIcon(

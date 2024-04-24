@@ -22,7 +22,7 @@ class EditTodo extends StatelessWidget {
       builder: (context, state) {
         return AppTextButton(
           textColor: Colors.white,
-          text: 'edite',
+          text: 'edit',
           onPressed: () => actionThenTapFloatingButton(context),
         );
       },

@@ -4,10 +4,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:todo/core/theming/styles.dart';
 import 'package:todo/features/home/data/model/todo_model.dart';
+import 'package:todo/features/home/logic/read_cubit/read_todo_cubit.dart';
 import 'package:todo/features/home/logic/write_cubit/write_todo_cubit.dart';
 import 'package:todo/features/home/logic/write_cubit/write_todo_state.dart';
 import 'package:todo/features/home/ui/widgets/delete_todo.dart';
 import 'package:todo/features/home/ui/widgets/edit_todo.dart';
+import 'package:todo/features/home/ui/widgets/view_todo.dart';
 
 class TodoViewItems extends StatelessWidget {
   final int index;
@@ -23,19 +25,35 @@ class TodoViewItems extends StatelessWidget {
         return DeleteTodo(
           index: index,
           todoModel: todoModel,
-          child: Container(
-            width: 370.w,
-            height: 90.h,
-            padding: EdgeInsets.symmetric(vertical: 2.h, horizontal: 10.w),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
-              color: Color(todoModel.colorCode),
+          child: GestureDetector(
+            onTap: () => actionOnTapItem(context),
+            child: Container(
+              width: 370.w,
+              height: 90.h,
+              padding: EdgeInsets.symmetric(vertical: 2.h, horizontal: 10.w),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                color: Color(todoModel.colorCode),
+              ),
+              child: _showTextTodo(todoModel),
             ),
-            child: _showTextTodo(todoModel),
           ),
         );
       },
     );
+  }
+
+  void actionOnTapItem(BuildContext context) {
+    showDialog(
+        context: context,
+       barrierDismissible: false,
+        builder: (context) {
+          return ViewTodo(
+            todoModel: todoModel,
+          );
+        }).whenComplete(() {
+      context.read<ReadTodoCubit>().getTodos();
+    });
   }
 
   Widget _showTextTodo(TodoModel todoModel) {

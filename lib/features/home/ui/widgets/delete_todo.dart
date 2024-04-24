@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:todo/core/theming/colors.dart';
 import 'package:todo/core/theming/styles.dart';
+import 'package:todo/core/widgets/app_blur.dart';
 import 'package:todo/core/widgets/app_text_button.dart';
 import 'package:todo/features/home/data/model/todo_model.dart';
 import 'package:todo/features/home/logic/read_cubit/read_todo_cubit.dart';
@@ -13,7 +14,8 @@ class DeleteTodo extends StatelessWidget {
   final int index;
   final TodoModel todoModel;
   final Widget child;
-final int duration=400;
+  final int duration = 400;
+
   const DeleteTodo({
     super.key,
     required this.index,
@@ -24,14 +26,13 @@ final int duration=400;
   @override
   Widget build(BuildContext context) {
     return Dismissible(
-    movementDuration: Duration(milliseconds: duration),
+      movementDuration: Duration(milliseconds: duration),
       resizeDuration: Duration(milliseconds: duration),
       key: UniqueKey(),
       background: backgroundDismissible(),
       direction: DismissDirection.endToStart,
       onDismissed: (direction) => _onDismissed(context),
       confirmDismiss: (direction) => _confirmDismiss(direction, context),
-
       child: child,
     );
   }
@@ -41,22 +42,24 @@ final int duration=400;
     return await showDialog(
       barrierDismissible: false,
       context: context,
-      builder: (context) => AlertDialog(
-        backgroundColor: ColorsManager.white,
-        title: Text(
-          "Are you sure?",
-          style: TextStyles.font10darkBlueBold.copyWith(fontSize: 18.sp),
+      builder: (context) => AppBlur(
+        child: AlertDialog(
+          backgroundColor: ColorsManager.white,
+          title: Text(
+            "Are you sure?",
+            style: TextStyles.font10darkBlueBold.copyWith(fontSize: 18.sp),
+          ),
+          actions: [
+            AppTextButton(
+              onPressed: () => Navigator.of(context).pop(false),
+              text: 'Cancel',
+            ),
+            AppTextButton(
+              onPressed: () => Navigator.of(context).pop(true),
+              text: 'Delete',
+            ),
+          ],
         ),
-        actions: [
-          AppTextButton(
-            onPressed: () => Navigator.of(context).pop(false),
-            text: 'Cancel',
-          ),
-          AppTextButton(
-            onPressed: () => Navigator.of(context).pop(true),
-            text: 'Delete',
-          ),
-        ],
       ),
     );
   }

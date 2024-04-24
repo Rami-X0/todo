@@ -10,10 +10,12 @@ import 'package:todo/features/home/logic/write_cubit/write_todo_state.dart';
 
 class AddTodoButton extends StatelessWidget {
   final bool editTodo;
-final int index;
+  final int index;
+
   const AddTodoButton({
     super.key,
-    required this.editTodo, required this.index,
+    required this.editTodo,
+    required this.index,
   });
 
   @override
@@ -21,7 +23,7 @@ final int index;
     return BlocBuilder<WriteTodoCubit, WriteTodoState>(
       builder: (context, state) {
         return InkWell(
-          onTap: () => onTapAddTodo(context),
+          onTap: () => onTapSaveButton(context),
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 1000),
             width: 200,
@@ -52,7 +54,7 @@ final int index;
     );
   }
 
-  void onTapAddTodo(BuildContext context) {
+  void onTapSaveButton(BuildContext context) {
     final writeCubit = context.read<WriteTodoCubit>();
     if (writeCubit.formKey.currentState!.validate()) {
       if (editTodo == true) {

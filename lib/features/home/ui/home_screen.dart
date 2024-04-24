@@ -20,8 +20,7 @@ class HomeScreen extends StatelessWidget {
       body: SafeArea(
         child: BlocBuilderListViewTodos(),
       ),
-      floatingActionButton: FloatingActionButtonNewTodo( ),
-
+      floatingActionButton: FloatingActionButtonNewTodo(),
     );
   }
 }
