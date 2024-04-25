@@ -5,13 +5,13 @@ import 'package:todo/core/helper/bloc_observer.dart';
 import 'package:todo/core/helper/hive_constants.dart';
 import 'package:todo/features/home/data/model/todo_model.dart';
 import 'package:todo/todo_app.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Hive.registerAdapter(TodoModelAdapter());
   await Hive.initFlutter();
   await Hive.openBox(HiveConstants.todoBox);
   Bloc.observer = MyBlocObserver();
-//await ScreenUtil.ensureScreenSize();
+await ScreenUtil.ensureScreenSize();
   runApp(const TodoApp());
 }
