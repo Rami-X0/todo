@@ -4,6 +4,7 @@ import 'package:todo/core/theming/colors.dart';
 class TodoTheme {
   static ThemeData lightTheme = ThemeData(
     scaffoldBackgroundColor: ColorsManager.white,
+    primarySwatch: Colors.red,
     textSelectionTheme: TextSelectionThemeData(
       cursorColor: ColorsManager.secondaryColor,
       selectionColor: ColorsManager.secondaryColor.withOpacity(0.5),

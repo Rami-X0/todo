@@ -127,7 +127,7 @@ class _WriteTodoTextFormFieldState extends State<WriteTodoTextFormField> {
           color: ColorsManager.secondaryColor,
         ),
       ),
-      isDense: true,
+      // isDense: true,
       filled: true,
       fillColor: ColorsManager.white.withOpacity(0.1),
     );

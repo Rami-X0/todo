@@ -31,6 +31,7 @@ class EditTodo extends StatelessWidget {
 
   void actionThenTapFloatingButton(BuildContext context) {
     showModalBottomSheet(
+      useSafeArea: true,
       context: context,
       isScrollControlled: true,
       backgroundColor: Colors.transparent,

@@ -26,41 +26,49 @@ class BottomSheetItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return multiBlocProvider(
-      child: BlocBuilder<WriteTodoCubit, WriteTodoState>(
-        builder: (context, state) {
-          return Padding(
-            padding: MediaQuery.of(context).viewInsets,
-            child: AppBlur(
-              child: AnimatedContainer(
-                duration: const Duration(milliseconds: 1000),
-                height: 490.h,
-                decoration: BoxDecoration(
-                  color: Color(context.read<WriteTodoCubit>().colorCode),
-                  borderRadius: const BorderRadius.only(
-                    topRight: Radius.circular(15),
-                    topLeft: Radius.circular(15),
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Gap(10.h),
+            BlocBuilder<WriteTodoCubit, WriteTodoState>(
+              builder: (context, state) {
+                return Padding(
+                  padding: MediaQuery.of(context).viewInsets,
+                  child: AppBlur(
+                    child: AnimatedContainer(
+                      duration: const Duration(milliseconds: 1000),
+                      height: 485.h,
+                      decoration: BoxDecoration(
+                        color: Color(context.read<WriteTodoCubit>().colorCode),
+                        borderRadius: const BorderRadius.only(
+                          topRight: Radius.circular(15),
+                          topLeft: Radius.circular(15),
+                        ),
+                      ),
+                      child: Column(
+                        children: [
+                          WriteTodoTextFormField(
+                            textTodo: textTodo,
+                          ),
+                          Gap(15.h),
+                          const Spacer(),
+                          const ChooseColorListView(),
+                          Gap(15.h),
+                          AddTodoButton(
+                            editTodo: editTodo,
+                            index: index,
+                          ),
+                          Gap(15.h),
+                        ],
+                      ),
+                    ),
                   ),
-                ),
-                child: Column(
-                  children: [
-                    WriteTodoTextFormField(
-                      textTodo: textTodo,
-                    ),
-                    Gap(15.h),
-                    const Spacer(),
-                    const ChooseColorListView(),
-                    Gap(15.h),
-                    AddTodoButton(
-                      editTodo: editTodo,
-                      index: index,
-                    ),
-                    Gap(15.h),
-                  ],
-                ),
-              ),
+                );
+              },
             ),
-          );
-        },
+          ],
+        ),
       ),
     );
   }
